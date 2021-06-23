@@ -20,5 +20,6 @@
   </head>
   <body>
     <h1><?php print($titulo) ?></h1>
+    <p>Cambios</p>
   </body>
 </html>
