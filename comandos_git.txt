@@ -1,0 +1,26 @@
+
+# Primero debemos crear repositorio git.
+
+# conocer la configuración global
+git config --global --list
+
+git config --global user.name "Usuario de git"
+git config --global user.password "Password"
+git config --global user.email "correo relacionado al git"
+
+git config --global init.defaultBranch main
+
+
+# Vamos a la carpeta del proyecto y damos
+
+git init
+git add .
+git commit -m 'Inicio de proyectos adsi virtual 2175820'
+
+git remote add origin master https://github.com/IsraelArbona/ADSI_2175820.git
+
+git push -u origin master
+
+# Cuando queremos forzar archivos
+git push -f origin master
+
