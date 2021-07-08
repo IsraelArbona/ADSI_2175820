@@ -46,6 +46,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" 
     integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     
+    <link rel="stylesheet" href="Recursos/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="Recursos/css/estilo.css">
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" 
     integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -57,22 +60,23 @@
 </head>
 <body>
 
-    <div class="container-fluid text-center">
-        <div class="row align-item-center justify-content-center">
-
-                <form action="login.php" method = "post">
-                    <div class="form-group">
-                        <label for="nom">Usuario</label>
-                        <input class="form-control" type="text" id="nom" name="usuario" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="cont">Contraseña</label>
-                        <input class="form-control" type="password" id="cont" name="contrasena" required>
-                    </div>
-                    <button class="btn btn-primary" type="submit" name="enviar">Ingresar</button>
-                </form>
+    <div class="login-dark" >
         
-        </div>
+        <form action="login.php" method = "post">
+            <h2 class= "sr-only">Login</h2>
+            <div class="illustration"><i class="icon ion-ios-body-outline"></i></div>
+            <div class="form-group">  
+                <input class="form-control" type="text" id="nom" name="usuario" placeholder="Usuario" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" id="cont" name="contrasena" placeholder="Contraseña" required>
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" class="btn btn-primary" type="submit" id="enviar" name="enviar" value="Ingresar" required>
+            </div>
+        </form>
+        
     </div>
 
 </body>
