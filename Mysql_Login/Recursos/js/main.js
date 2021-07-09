@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $('#tabla_pr_tabla').dataTable({
       "bProcessing":true,
-      "sAjaxSource": "consultas/c_pr_tabla.php",
+      "sAjaxSource": "Consulta/con_p_tabla.php",
       "aoColumns": [
           {mData:'id'},
           {mData:'nombre'},
