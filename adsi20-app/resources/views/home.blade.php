@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    <a href="{{ route('principal.users.index')}}">Usuarios</a>
+                    @can('principal')
+                        <a href="{{ route('principal.users.index')}}">Usuarios</a>
+                    @endcan
                 </div>
             </div>
         </div>

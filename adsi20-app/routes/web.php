@@ -18,19 +18,32 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware(['auth'])->group(function (){
 
-Route::get('principal.users','UserController@index')->name('principal.users.index');
-Route::get('principal.users/{user}','UserController@show')->name('principal.users.show');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-// crear usuarios
-Route::get('principal.users.create','UserController@create')->name('principal.users.create');
-Route::post('principal.users.store','UserController@store')->name('principal.users.store');
+    Route::get('principal.users','UserController@index')->name('principal.users.index')
+    ->middleware('permission:principal.users.index');
 
-// editar usuarios
-Route::put('principal.users/{user}','UserController@update')->name('principal.users.update');
-Route::get('principal.users/{user}/edit','UserController@edit')->name('principal.users.edit');
+    Route::get('principal.users/{user}','UserController@show')->name('principal.users.show')
+    ->middleware('permission:principal.users.show');
+    
+    // crear usuarios
+    Route::get('principal.users.create','UserController@create')->name('principal.users.create')
+    ->middleware('permission:principal.users.create');
+    Route::post('principal.users.store','UserController@store')->name('principal.users.store')
+    ->middleware('permission:principal.users.store');
+    
+    // editar usuarios
+    Route::put('principal.users/{user}','UserController@update')->name('principal.users.update')
+    ->middleware('permission:principal.users.update');
+    Route::get('principal.users/{user}/edit','UserController@edit')->name('principal.users.edit')
+    ->middleware('permission:principal.users.edit');
+    
+    // eliminar usuarios
+    Route::delete('principal.users/{user}','UserController@destroy')->name('principal.users.destroy')
+    ->middleware('permission:principal.users.destroy');
 
-// eliminar usuarios
-Route::delete('principal.users/{user}','UserController@destroy')->name('principal.users.destroy');
+});
+
 
