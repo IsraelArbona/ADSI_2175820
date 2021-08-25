@@ -22,6 +22,9 @@ Route::middleware(['auth'])->group(function (){
 
     Route::get('/home', 'HomeController@index')->name('home');
 
+
+    // Usuarios
+
     Route::get('principal.users','UserController@index')->name('principal.users.index')
     ->middleware('permission:principal.users.index');
 
@@ -43,6 +46,31 @@ Route::middleware(['auth'])->group(function (){
     // eliminar usuarios
     Route::delete('principal.users/{user}','UserController@destroy')->name('principal.users.destroy')
     ->middleware('permission:principal.users.destroy');
+
+
+    // Roles y Permisos
+    
+    Route::get('principal.roles','RoleController@index')->name('principal.roles.index')
+    ->middleware('permission:principal.roles.index');
+
+    Route::get('principal.roles/{role}','RoleController@show')->name('principal.roles.show')
+    ->middleware('permission:principal.roles.show');
+    
+    // crear usuarios
+    Route::get('principal.roles.create','RoleController@create')->name('principal.roles.create')
+    ->middleware('permission:principal.roles.create');
+    Route::post('principal.roles.store','RoleController@store')->name('principal.roles.store')
+    ->middleware('permission:principal.roles.store');
+    
+    // editar usuarios
+    Route::put('principal.roles/{role}','RoleController@update')->name('principal.roles.update')
+    ->middleware('permission:principal.roles.update');
+    Route::get('principal.roles/{role}/edit','RoleController@edit')->name('principal.roles.edit')
+    ->middleware('permission:principal.roles.edit');
+    
+    // eliminar usuarios
+    Route::delete('principal.roles/{role}','RoleController@destroy')->name('principal.roles.destroy')
+    ->middleware('permission:principal.roles.destroy');
 
 });
 

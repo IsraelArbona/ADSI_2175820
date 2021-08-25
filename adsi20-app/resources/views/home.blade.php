@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('default')
 
 @section('content')
 <div class="container">
@@ -14,9 +14,6 @@
                         </div>
                     @endif
 
-                    @can('principal')
-                        <a href="{{ route('principal.users.index')}}">Usuarios</a>
-                    @endcan
                 </div>
             </div>
         </div>
