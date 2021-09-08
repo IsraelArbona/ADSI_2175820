@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Rolee;
+
 use Illuminate\Http\Request;
-use Spatie\permission\Models\Role;
-use Spatie\permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
 {
@@ -49,8 +51,8 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $role = Role::create($request->all());
-        $role->permission()->sync($request->get('permissions'));
+        $role = Rolee::create($request->all());
+        $role->permissions()->sync($request->get('permissions'));
         return redirect()->route('principal.roles.index')->with('info','Rol Guargado');
 
     }
@@ -89,9 +91,9 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $role = Role::find($id);
+        $role = Rolee::find($id);
         $role->update($request->all());
-        $role->permission()->sync($request->get('permissions'));
+        $role->permissions()->sync($request->get('permissions'));
         return redirect()->route('principal.roles.index')
         ->with('info','Rol Editado Correctamente');
 

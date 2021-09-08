@@ -12,6 +12,12 @@
                             Nuevo
                         </a>
                     @endcan
+
+                        <a href="{{ route('principal.users.exportarExcel') }}" class="btn btn-sm btn-outline-primary float-right">
+                            Exp. Excel
+                        </a>
+
+
                 </div>
 
                 <div class="card-body">

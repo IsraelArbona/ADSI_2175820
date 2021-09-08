@@ -98,3 +98,15 @@ npm run dev
 
 
 
+
+
+
+
+
+# utlización del excel en laravel
+
+https://docs.laravel-excel.com/3.1/getting-started/installation.html
+
+# ejecutar el composer en el terminal
+
+composer require maatwebsite/excel

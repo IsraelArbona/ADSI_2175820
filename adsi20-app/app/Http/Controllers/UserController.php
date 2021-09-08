@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Exports\UserExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -102,5 +104,10 @@ class UserController extends Controller
         $user->delete();
         return back()->with('info','Usuario Eliminado Correctamente');
          
+    }
+
+    public function exportarExcel()
+    {
+        return new UserExport();
     }
 }

@@ -10,7 +10,7 @@
         @foreach($permissions as $permission)
         <li>
             <label>
-                {{ Form::checkbox('permission[]',$permission->id,null) }}
+                {{ Form::checkbox('permissions[]',$permission->id,null) }}
                 {{ $permission->name }}
             </label>
         </li>
