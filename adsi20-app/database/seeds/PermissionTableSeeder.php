@@ -32,6 +32,27 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['name' => 'principal.roles.create']);
         Permission::create(['name' => 'principal.roles.destroy']);
 
+        // permisos de paises
+        Permission::create(['name' => 'principal.paises.index']);
+        Permission::create(['name' => 'principal.paises.edit']);
+        Permission::create(['name' => 'principal.paises.show']);
+        Permission::create(['name' => 'principal.paises.create']);
+        Permission::create(['name' => 'principal.paises.destroy']);
+
+        // permisos de dptos
+        Permission::create(['name' => 'principal.dptos.index']);
+        Permission::create(['name' => 'principal.dptos.edit']);
+        Permission::create(['name' => 'principal.dptos.show']);
+        Permission::create(['name' => 'principal.dptos.create']);
+        Permission::create(['name' => 'principal.dptos.destroy']);
+
+        // permisos de ciudades
+        Permission::create(['name' => 'principal.ciudades.index']);
+        Permission::create(['name' => 'principal.ciudades.edit']);
+        Permission::create(['name' => 'principal.ciudades.show']);
+        Permission::create(['name' => 'principal.ciudades.create']);
+        Permission::create(['name' => 'principal.ciudades.destroy']);
+
         // crear roles
         $admins = Role::create (['name' => 'Administrador-Super']);
         $admin = Role::create (['name' => 'Administrador']);

@@ -20,7 +20,13 @@
             @can('principal.roles.index')
             <a class="collapse-item" href="{{ route('principal.roles.index')}}">Roles</a>
             @endcan
-            <a class="collapse-item" href="#">Paises</a>
+            @can('principal.paises.index')
+            <a class="collapse-item" href="{{ route('principal.paises.index')}}">Paises</a>
+            @endcan
+            @can('principal.dptos.index')
+            <a class="collapse-item" href="{{ route('principal.dptos.index')}}">Departamentos</a>
+            @endcan
+            <a class="collapse-item" href="#">Ciudades</a>
         </div>
     </div>
 </li>

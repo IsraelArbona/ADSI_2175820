@@ -12,9 +12,22 @@ class PaisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+                        // SELECT * FROM PAIS;
+                        $paises = Pais::query();
+
+                        if ($request->ajax()){
+                            return datatables()
+                            ->eloquent($paises)
+                            ->addColumn('action', function ($paises){
+                                return view('principal.paises.partials.dataAction',compact('paises'));
+                            })
+                            ->rawColumns(['action'])
+                            ->toJson();
+                        }
+                
+                        return view('principal.paises.index',compact('paises'));
     }
 
     /**
@@ -24,7 +37,7 @@ class PaisController extends Controller
      */
     public function create()
     {
-        //
+        return view('principal.paises.create');
     }
 
     /**
@@ -35,7 +48,9 @@ class PaisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $paises = Pais::create($request->all());
+        return redirect()->route('principal.paises.index')->with('info','Pais Guardado');
+   
     }
 
     /**
@@ -44,9 +59,10 @@ class PaisController extends Controller
      * @param  \App\Pais  $pais
      * @return \Illuminate\Http\Response
      */
-    public function show(Pais $pais)
+    public function show($id)
     {
-        //
+        $pais = Pais::find($id);
+        return view('principal.paises.show',compact('pais'));
     }
 
     /**
@@ -55,9 +71,10 @@ class PaisController extends Controller
      * @param  \App\Pais  $pais
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pais $pais)
+    public function edit($id)
     {
-        //
+        $pais = Pais::find($id);
+        return view('principal.paises.edit',compact('pais'));
     }
 
     /**
@@ -67,9 +84,11 @@ class PaisController extends Controller
      * @param  \App\Pais  $pais
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pais $pais)
+    public function update(Request $request,$id)
     {
-        //
+        $pais = Pais::find($id);
+        $pais->update($request->all());
+        return redirect()->route('principal.paises.index')->with('info','Pais Editado Correctamente');
     }
 
     /**
@@ -78,8 +97,11 @@ class PaisController extends Controller
      * @param  \App\Pais  $pais
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pais $pais)
+    public function destroy($id)
     {
-        //
+        $pais = Pais::find($id);
+        $pais->delete();
+        return back()->with('info','Pais Eliminado Correctamente');
+        
     }
 }

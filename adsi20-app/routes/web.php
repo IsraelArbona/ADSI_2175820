@@ -65,6 +65,45 @@ Route::middleware(['auth'])->group(function (){
     Route::delete('principal.roles/{role}','RoleController@destroy')->name('principal.roles.destroy')
     ->middleware('permission:principal.roles.destroy');
 
+
+    // Paises
+    Route::get('principal.paises','PaisController@index')->name('principal.paises.index')
+    ->middleware('permission:principal.paises.index');
+    Route::get('principal.paises/{pais}','PaisController@show')->name('principal.paises.show')
+    ->middleware('permission:principal.paises.show');
+    // crear
+    Route::get('principal.paises.create','PaisController@create')->name('principal.paises.create')
+    ->middleware('permission:principal.paises.create');
+    Route::post('principal.paises.store','PaisController@store')->name('principal.paises.store')
+    ->middleware('permission:principal.paises.create');
+    // editar
+    Route::put('principal.paises/{pais}','PaisController@update')->name('principal.paises.update')
+    ->middleware('permission:principal.paises.edit');
+    Route::get('principal.paises/{pais}/edit','PaisController@edit')->name('principal.paises.edit')
+    ->middleware('permission:principal.paises.edit');
+    // eliminar 
+    Route::delete('principal.paises/{pais}','PaisController@destroy')->name('principal.paises.destroy')
+    ->middleware('permission:principal.paises.destroy');
+
+    // Dptos
+    Route::get('principal.dptos','DptoController@index')->name('principal.dptos.index')
+    ->middleware('permission:principal.dptos.index');
+    Route::get('principal.dptos/{dpto}','DptoController@show')->name('principal.dptos.show')
+    ->middleware('permission:principal.dptos.show');
+    // crear
+    Route::get('principal.dptos.create','DptoController@create')->name('principal.dptos.create')
+    ->middleware('permission:principal.dptos.create');
+    Route::post('principal.dptos.store','DptoController@store')->name('principal.dptos.store')
+    ->middleware('permission:principal.dptos.create');
+    // editar
+    Route::put('principal.dptos/{dpto}','DptoController@update')->name('principal.dptos.update')
+    ->middleware('permission:principal.dptos.edit');
+    Route::get('principal.dptos/{dpto}/edit','DptoController@edit')->name('principal.dptos.edit')
+    ->middleware('permission:principal.dptos.edit');
+    // eliminar 
+    Route::delete('principal.dptos/{dpto}','DptoController@destroy')->name('principal.dptos.destroy')
+    ->middleware('permission:principal.dptos.destroy');
+
 });
 
 

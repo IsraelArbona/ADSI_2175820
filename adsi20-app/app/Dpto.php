@@ -4,15 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pais extends Model
+class Dpto extends Model
 {
-    protected $table = 'pais';
+    protected $table = 'dptos';
     protected $primaryKey = 'id';
     public $incrementing = false;
 
     protected $fillable = [
         'id',
         'nombre',
-        'abrev',
-    ];  
+        'pais_id',
+    ]; 
 }
