@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Pais;
+use App\Imports\PaisImport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 class PaisController extends Controller
@@ -14,20 +16,20 @@ class PaisController extends Controller
      */
     public function index(Request $request)
     {
-                        // SELECT * FROM PAIS;
-                        $paises = Pais::query();
+        // SELECT * FROM PAIS;
+        $paises = Pais::query();
 
-                        if ($request->ajax()){
-                            return datatables()
-                            ->eloquent($paises)
-                            ->addColumn('action', function ($paises){
-                                return view('principal.paises.partials.dataAction',compact('paises'));
-                            })
-                            ->rawColumns(['action'])
-                            ->toJson();
-                        }
-                
-                        return view('principal.paises.index',compact('paises'));
+        if ($request->ajax()){
+            return datatables()
+            ->eloquent($paises)
+            ->addColumn('action', function ($paises){
+                return view('principal.paises.partials.dataAction',compact('paises'));
+            })
+            ->rawColumns(['action'])
+            ->toJson();
+        }
+
+        return view('principal.paises.index',compact('paises'));
     }
 
     /**
@@ -103,5 +105,12 @@ class PaisController extends Controller
         $pais->delete();
         return back()->with('info','Pais Eliminado Correctamente');
         
+    }
+
+    public function fileImportPais(Request $request)
+    {
+        Excel::import(new PaisImport,$request->file('filepais')->store('temp'));
+
+        return back()->with('info','Importación Correctamente');
     }
 }

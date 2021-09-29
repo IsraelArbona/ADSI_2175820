@@ -10,8 +10,8 @@
 </div>
 
 <div class="form-group">
-    {{ Form::label('pais_id','Pais') }}
-    {{ Form::select('pais_id',$pais,null,['class'=>'form-control']) }}
+    {{ Form::label('dpto_id','Pais') }}
+    {{ Form::select('dpto_id',$dptos,null,['class'=>'form-control']) }}
 </div>
 
 <div class="form-group">

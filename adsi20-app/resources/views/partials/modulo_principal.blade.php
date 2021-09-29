@@ -17,16 +17,22 @@
             @can('principal.users.index')
                 <a class="collapse-item" href="{{ route('principal.users.index')}}">Usuarios</a>
             @endcan
+
             @can('principal.roles.index')
             <a class="collapse-item" href="{{ route('principal.roles.index')}}">Roles</a>
             @endcan
+
             @can('principal.paises.index')
             <a class="collapse-item" href="{{ route('principal.paises.index')}}">Paises</a>
             @endcan
+            
             @can('principal.dptos.index')
             <a class="collapse-item" href="{{ route('principal.dptos.index')}}">Departamentos</a>
             @endcan
-            <a class="collapse-item" href="#">Ciudades</a>
+
+            @can('principal.ciudades.index')
+            <a class="collapse-item" href="{{ route('principal.ciudades.index')}}">Ciudades</a>
+            @endcan
         </div>
     </div>
 </li>

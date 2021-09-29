@@ -6,15 +6,17 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
-                    Registro Nuevo Pais
-                    <a href="{{ route('principal.paises.index') }}" class="btn btn-sm btn-outline-primary float-right">
+                    Registro Nuevo Ciudad
+                    <a href="{{ route('principal.ciudades.index') }}" class="btn btn-sm btn-outline-primary float-right">
                         Regresar
                     </a>
                 </div>
 
                 <div class="card-body">
-                    {{ Form::open(['route' => 'principal.paises.store']) }}
-                        @include('principal.paises.partials.forme')
+                    {{ Form::open(['route' => 'principal.ciudades.store']) }}
+
+                        @include('principal.ciudades.partials.forme')
+
                     {{ Form::close() }}
                 </div>
             </div>

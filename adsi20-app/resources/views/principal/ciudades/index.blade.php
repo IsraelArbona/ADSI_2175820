@@ -6,38 +6,21 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
-                    Registro Paises
-                    @can('principal.paises.create')
-                        <a href="{{ route('principal.paises.create') }}" class="btn btn-sm btn-outline-primary float-right">
+                    Registro Ciudades
+                    @can('principal.ciudades.create')
+                        <a href="{{ route('principal.ciudades.create') }}" class="btn btn-sm btn-outline-primary float-right">
                             Nuevo
                         </a>
                     @endcan
-
-                    <form action="{{ route('principal.paises.importarExcel') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                        <div class="form-group">
-                            <input type="file" name="filepais" class="custom-file-input" id="customFilePais" required>
-                            <label class="custom-file-label" for="customFilePais">Pais</label>
-                        </div>
-
-                        <button class="btn btn-sm btn-outline-primary">
-                            Importar
-                        </button>
-            
-                    </form>
-
                 </div>
 
-                
-                
-
                 <div class="card-body">
-                    <table id="tpais" class="display compact table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                    <table id="tciudad" class="display compact table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                         <thead>
                             <tr>
                                 <th>Codigo</th>
                                 <th>Nombre</th>
-                                <th>Abrev</th>
+                                <th>Dpto</th>
                                 <th width="80px">action</th>
                             </tr>
                         </thead>
@@ -45,7 +28,7 @@
                             <tr>
                                 <th>Codigo</th>
                                 <th>Nombre</th>
-                                <th>Abrev</th>
+                                <th>Dpto</th>
                                 <th>action</th>
                             </tr>
                         </tfoot>
@@ -63,14 +46,14 @@
     <script type="text/javascript">
         $(document).ready(function(){
 
-            $('#tpais').DataTable({
+            $('#tciudad').DataTable({
                 "serverSide": true,
                 "responsive": true,
-                "ajax": "{{ route('principal.paises.index')}}",
+                "ajax": "{{ route('principal.ciudades.index')}}",
                 "columns": [
-                    {data: 'id'},
-                    {data: 'nombre'},
-                    {data: 'abrev'},
+                    {data: 'id', name:'ciudads.id'},
+                    {data: 'nombre', name:'ciudads.nombre'},
+                    {data: 'dnombre', name:'dptos.nombre'},
                     {data: 'action', orderable: false, searchable:false}
                 ],
                 "dom": "<'row'<'col-lg-10 col-md-10 col-xs-12'f><'col-lg-2 col-md-2 col-xs-12'l>>" +

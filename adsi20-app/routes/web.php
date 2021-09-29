@@ -22,7 +22,6 @@ Route::middleware(['auth'])->group(function (){
 
     Route::get('/home', 'HomeController@index')->name('home');
 
-
     // Usuarios
     Route::get('principal.users','UserController@index')->name('principal.users.index')
     ->middleware('permission:principal.users.index');
@@ -85,6 +84,10 @@ Route::middleware(['auth'])->group(function (){
     Route::delete('principal.paises/{pais}','PaisController@destroy')->name('principal.paises.destroy')
     ->middleware('permission:principal.paises.destroy');
 
+    // Importar pais
+    Route::post('principal.paises.importarExcel','PaisController@fileImportPais')->name('principal.paises.importarExcel')
+    ->middleware('permission:principal.paises.index');
+
     // Dptos
     Route::get('principal.dptos','DptoController@index')->name('principal.dptos.index')
     ->middleware('permission:principal.dptos.index');
@@ -103,6 +106,25 @@ Route::middleware(['auth'])->group(function (){
     // eliminar 
     Route::delete('principal.dptos/{dpto}','DptoController@destroy')->name('principal.dptos.destroy')
     ->middleware('permission:principal.dptos.destroy');
+
+    // Ciudades
+    Route::get('principal.ciudades','CiudadController@index')->name('principal.ciudades.index')
+    ->middleware('permission:principal.ciudades.index');
+    Route::get('principal.ciudades/{ciudad}','CiudadController@show')->name('principal.ciudades.show')
+    ->middleware('permission:principal.ciudades.show');
+    // crear
+    Route::get('principal.ciudades.create','CiudadController@create')->name('principal.ciudades.create')
+    ->middleware('permission:principal.ciudades.create');
+    Route::post('principal.ciudades.store','CiudadController@store')->name('principal.ciudades.store')
+    ->middleware('permission:principal.ciudades.create');
+    // editar
+    Route::put('principal.ciudades/{ciudad}','CiudadController@update')->name('principal.ciudades.update')
+    ->middleware('permission:principal.ciudades.edit');
+    Route::get('principal.ciudades/{ciudad}/edit','CiudadController@edit')->name('principal.ciudades.edit')
+    ->middleware('permission:principal.ciudades.edit');
+    // eliminar 
+    Route::delete('principal.ciudades/{ciudad}','CiudadController@destroy')->name('principal.ciudades.destroy')
+    ->middleware('permission:principal.ciudades.destroy'); 
 
 });
 
