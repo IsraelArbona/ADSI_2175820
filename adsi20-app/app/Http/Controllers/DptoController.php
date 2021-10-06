@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Dpto;
 use App\Pais;
 
+use App\Imports\DptosImport;
+
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DptoController extends Controller
 {
@@ -80,5 +83,11 @@ class DptoController extends Controller
         $dpto->delete();
         return back()->with('info','Dpto Eliminado Correctamente');
         
+    }
+
+    public function importarExcel(Request $request)
+    {
+        Excel::import(new DptosImport,request()->file('filedptos'));
+        return back();
     }
 }

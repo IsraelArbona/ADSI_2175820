@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Dpto;
 use App\Ciudad;
 
+use App\Imports\CiudadsImport;
+
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CiudadController extends Controller
 {
@@ -80,5 +83,11 @@ class CiudadController extends Controller
         $ciudad->delete();
         return back()->with('info','Ciudad Eliminado Correctamente');
         
+    }
+
+    public function importarExcel(Request $request)
+    {
+        Excel::import(new CiudadsImport,request()->file('fileciudad'));
+        return back();
     }
 }

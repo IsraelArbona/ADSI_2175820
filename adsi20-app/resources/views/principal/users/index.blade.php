@@ -17,6 +17,10 @@
                             Exp. Excel
                         </a>
 
+                        <a href="{{ route('principal.users.exportPdf') }}" class="btn btn-sm btn-outline-primary float-right">
+                            PDF
+                        </a>
+
 
                 </div>
 

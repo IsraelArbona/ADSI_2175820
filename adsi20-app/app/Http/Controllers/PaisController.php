@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Pais;
+
+
 use App\Imports\PaisImport;
-use Maatwebsite\Excel\Facades\Excel;
+
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PaisController extends Controller
 {
@@ -107,10 +110,9 @@ class PaisController extends Controller
         
     }
 
-    public function fileImportPais(Request $request)
+    public function importarExcel(Request $request)
     {
-        Excel::import(new PaisImport,$request->file('filepais')->store('temp'));
-
-        return back()->with('info','Importación Correctamente');
+        Excel::import(new PaisImport,request()->file('filepais'));
+        return back();
     }
 }

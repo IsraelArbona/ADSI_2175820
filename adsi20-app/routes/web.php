@@ -44,6 +44,12 @@ Route::middleware(['auth'])->group(function (){
     Route::get('Usuarios-Lista.xlsx','UserController@exportarExcel')->name('principal.users.exportarExcel')
     ->middleware('permission:principal.users.index');
 
+    // PDF
+    Route::get('Usuarios_list.pdf','UserController@exportPdf')->name('principal.users.exportPdf')
+    ->middleware('permission:principal.users.index');
+
+
+
 
     // Roles y Permisos
     Route::get('principal.roles','RoleController@index')->name('principal.roles.index')
@@ -85,7 +91,7 @@ Route::middleware(['auth'])->group(function (){
     ->middleware('permission:principal.paises.destroy');
 
     // Importar pais
-    Route::post('principal.paises.importarExcel','PaisController@fileImportPais')->name('principal.paises.importarExcel')
+    Route::post('principal.paises','PaisController@importarExcel')->name('principal.paises.importarExcel')
     ->middleware('permission:principal.paises.index');
 
     // Dptos
@@ -107,6 +113,12 @@ Route::middleware(['auth'])->group(function (){
     Route::delete('principal.dptos/{dpto}','DptoController@destroy')->name('principal.dptos.destroy')
     ->middleware('permission:principal.dptos.destroy');
 
+    // Importar dpto
+    Route::post('principal.dptos','DptoController@importarExcel')->name('principal.dptos.importarExcel')
+    ->middleware('permission:principal.dptos.index');
+
+    
+
     // Ciudades
     Route::get('principal.ciudades','CiudadController@index')->name('principal.ciudades.index')
     ->middleware('permission:principal.ciudades.index');
@@ -125,6 +137,10 @@ Route::middleware(['auth'])->group(function (){
     // eliminar 
     Route::delete('principal.ciudades/{ciudad}','CiudadController@destroy')->name('principal.ciudades.destroy')
     ->middleware('permission:principal.ciudades.destroy'); 
+
+    // Importar ciudades
+    Route::post('principal.ciudades','CiudadController@importarExcel')->name('principal.ciudades.importarExcel')
+    ->middleware('permission:principal.ciudades.index');
 
 });
 

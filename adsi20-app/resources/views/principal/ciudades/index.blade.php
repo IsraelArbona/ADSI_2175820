@@ -4,14 +4,46 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
+
+            <!-- Modal -->
+            <div class="modal fade" id="excelModal" tabindex="-1" aria-labelledby="excelModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="excelModalLabel">Cargar Archivo Ciudades</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                        <form action="{{ route('principal.ciudades.importarExcel') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="modal-body">
+                                <div class="form-group mb-4" style="max-width:500px; margin: 0 auto;">
+                                    <input type="file" name="fileciudad" class="custom-file-input" id="customFileCiudad" required> 
+                                    <label class="custom-file-label" for="customFileCiudad">Ciudades</label>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             <div class="card">
                 <div class="card-header">
                     Registro Ciudades
                     @can('principal.ciudades.create')
-                        <a href="{{ route('principal.ciudades.create') }}" class="btn btn-sm btn-outline-primary float-right">
+                        <a href="{{ route('principal.ciudades.create') }}" class="btn btn-sm btn-outline-primary float-right" style="margin-left:20px !important;">
                             Nuevo
                         </a>
                     @endcan
+
+                    <a class="btn btn-sm btn-outline-primary float-right" data-toggle="modal" data-target="#excelModal" style="margin-left:20px !important;">
+                        Importar Excel
+                    </a>
                 </div>
 
                 <div class="card-body">

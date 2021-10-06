@@ -2,15 +2,14 @@
 
 namespace App\Imports;
 
-use App\Pais;
+use App\Ciudad;
 
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class PaisImport implements ToModel,WithHeadingRow
+class CiudadsImport implements ToModel,WithHeadingRow
 {
 
-    //use Importable;
     /**
      * @param array $row
      * 
@@ -22,10 +21,10 @@ class PaisImport implements ToModel,WithHeadingRow
         if (!isset($row['id'])) {
             return null;
         }
-        return new Pais([
+        return new Ciudad([
             'id' => $row['id'],
             'nombre' => $row['nombre'],
-            'abrev'=> $row['abrev'],
+            'dpto_id'=> $row['dpto_id'],
         ]);
     }
 

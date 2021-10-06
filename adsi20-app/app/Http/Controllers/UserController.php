@@ -7,6 +7,8 @@ use App\Exports\UserExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
+use Barryvdh\Snappy\Facades\SnappyPdf as PDF;
+
 class UserController extends Controller
 {
     /**
@@ -109,5 +111,17 @@ class UserController extends Controller
     public function exportarExcel()
     {
         return new UserExport();
+    }
+
+    public function exportPdf()
+    {
+        $usuarios = User::query();
+
+        $pdf = PDF::loadView('principal.users.pdf.informeGeneral', compact('usuarios'));
+        $pdf->setOption('lowquality',true);
+        $pdf->setOption('no-outline',false);
+        $pdf->setOption('viewport-size','1366x1024');
+        return $pdf->stream('informe_usuarios.pdf');
+
     }
 }
